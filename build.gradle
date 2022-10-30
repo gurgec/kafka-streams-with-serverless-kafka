@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.upstash'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+
+mainClassName = "com.upstash.NotificationApp"
+
+
+dependencies {
+
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: '3.2.3'
+    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '3.2.3'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4'
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.4'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.3'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
